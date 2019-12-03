@@ -15,7 +15,11 @@ class Student
       FROM students
     SQL
 
-    DB[:conn].execute(sql)
+    DB[:conn].execute(sql) do |row| self.new_from_db(row)
+    end
+
+
+
   end
 
     # retrieve all the rows from the "Students" database
